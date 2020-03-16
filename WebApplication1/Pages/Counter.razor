@@ -1,0 +1,38 @@
+﻿@page "/counter"
+
+<h1>@Title</h1>
+
+<p>@Label: @CurrentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    [Parameter]
+    public string Title  { get; set; }
+    
+    [Parameter]
+    public string Label { get; set; } = "Current Count";
+
+    private int currentCount;
+
+    [Parameter]
+    public int CurrentCount { 
+        get => currentCount; 
+        set
+        {
+            if(currentCount != value)
+            {
+                currentCount = value;
+                CurrentCountChanged.InvokeAsync(currentCount);
+            }
+        } 
+    }
+
+    [Parameter]
+    public EventCallback<int> CurrentCountChanged { get; set; }
+
+    private void IncrementCount()
+    {    
+        CurrentCount++;
+    }
+}
