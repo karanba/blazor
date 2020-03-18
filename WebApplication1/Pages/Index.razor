@@ -1,20 +1,26 @@
-﻿@page "/"
+﻿@inject Services.BlazorTimer Timer
+@page "/"
 
-<h1>Hello, world!</h1>
-
+<CatPhotos @ref="cats" />
+<Timer Active="@true" TimeInSeconds="3" Tick="@NextCat" />
 Welcome to your new app.
 
-<Counter Title="Hadi" Label="Artır" 
-    @bind-CurrentCount="@counter" />
+<Counter Title="Hadi" Label="Artır"
+         @bind-CurrentCount="@counter" />
 
 <div>
     Counter : @counter
 </div>
 <SurveyPrompt Title="How is Blazor working for you?" />
-<MyAlert Show="@(counter > 8)">
-    <p>Hey There</p>
-</MyAlert>
+
+
 
 @code {
-    private int counter = 5;    
+    private int counter = 5;
+    private CatPhotos cats;
+    public void NextCat()
+    {
+        cats.NextCat();
+        this.StateHasChanged();
+    }
 }

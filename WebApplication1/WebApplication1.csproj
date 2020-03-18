@@ -4,4 +4,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Pages\Alert.cshtml.cs" />
+    <Compile Remove="Pages\MyAlert.razor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Pages\Alert.razor" />
+    <Content Remove="Pages\MyAlert.razor" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
 </Project>

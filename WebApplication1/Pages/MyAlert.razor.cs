@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace WebApplication1.Pages
 {
-    public class MyAlert : ComponentBase
+    public class MyAlert
     {
         [Parameter]
         public bool Show { get; set; }
