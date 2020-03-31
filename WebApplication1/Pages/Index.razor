@@ -1,8 +1,15 @@
-﻿@inject Services.BlazorTimer Timer
-@page "/"
+﻿@page "/"
 
+
+<input @bind="IntPro" />
+<input @bind="CurrentValue" />
+<input @bind="StartDate" @bind:format="yyyy-MM-dd" />
+@CurrentValue
+<p @bind-style="CurrentValue" @bind-style:event="onchange">
+    Ream me 346 4 2 !
+</p>
 <CatPhotos @ref="cats" />
-<Timer Active="@true" TimeInSeconds="3" Tick="@NextCat" />
+
 Welcome to your new app.
 
 <Counter Title="Hadi" Label="Artır"
@@ -14,10 +21,14 @@ Welcome to your new app.
 <SurveyPrompt Title="How is Blazor working for you?" />
 
 
+    
 
 @code {
     private int counter = 5;
     private CatPhotos cats;
+    private string CurrentValue { get; set; } = "color:red";
+    public int? IntPro { get; set; } = 123;
+    public DateTime StartDate { get; set; } = DateTime.Now;
     public void NextCat()
     {
         cats.NextCat();

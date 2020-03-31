@@ -22,6 +22,16 @@
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
             </NavLink>
         </li>
+        <li>
+            <AuthorizeView>
+                <Authorized Context="Auth">
+                    login
+                </Authorized>
+                <NotAuthorized>
+                    ananoums
+                </NotAuthorized>
+            </AuthorizeView>
+        </li>
     </ul>
 </div>
 
