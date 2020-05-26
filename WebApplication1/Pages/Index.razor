@@ -1,6 +1,10 @@
 ﻿@page "/"
-
-
+@inject IUserService UserService
+    <DxDataGrid Data="@DataSource">
+        <DxDataGridColumn Field="FirstName" AllowSort="DefaultBoolean.True"></DxDataGridColumn>
+        <DxDataGridColumn Field="LastName" AllowSort="DefaultBoolean.True"></DxDataGridColumn>
+        <DxDataGridColumn Field="Username" AllowSort="DefaultBoolean.True"></DxDataGridColumn>
+    </DxDataGrid>
 <input @bind="IntPro" />
 <input @bind="CurrentValue" />
 <input @bind="StartDate" @bind:format="yyyy-MM-dd" />
@@ -10,7 +14,7 @@
 </p>
 <CatPhotos @ref="cats" />
 
-Welcome to your new app.
+        Welcome to your new app.
 
 <Counter Title="Hadi" Label="Artır"
          @bind-CurrentCount="@counter" />
@@ -21,9 +25,10 @@ Welcome to your new app.
 <SurveyPrompt Title="How is Blazor working for you?" />
 
 
-    
+
 
 @code {
+    IEnumerable<User> DataSource;
     private int counter = 5;
     private CatPhotos cats;
     private string CurrentValue { get; set; } = "color:red";
@@ -33,5 +38,10 @@ Welcome to your new app.
     {
         cats.NextCat();
         this.StateHasChanged();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        DataSource = await UserService.GetAllAsync();
     }
 }

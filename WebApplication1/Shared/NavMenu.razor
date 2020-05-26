@@ -22,13 +22,32 @@
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
             </NavLink>
         </li>
-        <li>
+         <li class="nav-item px-3">
+            <NavLink class="nav-link" href="learnrouting">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Learn Routing
+            </NavLink>
+        </li>
+          <li class="nav-item px-3">
+            <NavLink class="nav-link" href="learnadvancerouting?Parameter1=Altay&Parameter2=Karakus">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Learn Advance Routing
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="parentcomponent">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Parent-Child
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
             <AuthorizeView>
-                <Authorized Context="Auth">
-                    login
+                <Authorized>
+                    <NavLink class="nav-link" href="Logout">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Log out (@context.User.Identity.Name)
+                    </NavLink>
                 </Authorized>
                 <NotAuthorized>
-                    ananoums
+                    <NavLink class="nav-link" href="Login">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Login
+                    </NavLink>
                 </NotAuthorized>
             </AuthorizeView>
         </li>

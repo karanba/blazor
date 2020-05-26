@@ -1,0 +1,17 @@
+@page "/learnnewrouting/{Parameter1:int}/{Parameter2}"
+@page "/learnnewrouting/{Parameter1:int}"
+@page "/learnnewrouting"
+@page "/learnrouting"
+
+<h3>Learn Routing</h3>
+
+<p> First Parameter: @Parameter1 </p>
+<p> Second Parameter: @Parameter2 </p>
+
+@code {
+    [Parameter]
+    public int Parameter1 { get; set; }
+    
+    [Parameter]    
+    public string Parameter2 { get; set; }
+}

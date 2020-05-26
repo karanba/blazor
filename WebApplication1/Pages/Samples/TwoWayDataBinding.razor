@@ -1,0 +1,22 @@
+@layout NewLayout
+@inherits TwoWayDataBindingBase
+@page "/Samples/TwoWayDataBinding"
+
+<h3>Two Way Data Binding</h3>
+
+<div class="form-group">
+    <label for="FullName">Full Name</label>
+    <input type="text" id="FullName" @bind-value="@FullName" @bind-value:event="oninput" />
+</div>
+
+<div class="form-group">
+    <label for="Age">Age</label>
+    <input type="text" id="Age" @bind="@Age" />
+</div>
+
+<div class="form-group">
+    <label for="BirthDate">Birth Date</label>
+    <input type="text" id="Age" @bind="@BirthDate" @bind:format="dd-MM-yy" />
+</div>
+<button @onclick="getName">Do It</button>
+<p class="lead">Fullname: @FullName <br/> Age: @Age <br/> BirthDate: @BirthDate </p>

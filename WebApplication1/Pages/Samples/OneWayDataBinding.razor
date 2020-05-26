@@ -1,0 +1,18 @@
+@page "/Samples/OneWayDataBinding"
+
+<h3>One Way Data Binding</h3>
+
+<div class="form-group">
+    <label for="FullName">Full Name</label>
+    <input type="text" id="FullName" value="@FullName" />
+</div>
+
+<div class="form-group">
+    <label for="Age">Age</label>
+    <input type="text" id="Age" value="@Age" />
+</div>
+<p class="lead">Fullname: @FullName <br/> Age: @Age</p>
+@code {
+    private string FullName { get; set; } = "Altay Karakuş";
+    private int Age { get; set; } = 40; 
+}

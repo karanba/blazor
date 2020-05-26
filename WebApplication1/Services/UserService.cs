@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using WebApplication1.Entities;
@@ -15,7 +16,8 @@ namespace WebApplication1.Services
     {
         private List<User> _users = new List<User>
         {
-            new User { Id = 1, FirstName = "Test", LastName = "User", Username = "test", Password = "test" }
+            new User { Id = 1, FirstName = "Test", LastName = "User", Username = "test", Password = "test" },
+            new User { Id = 1, FirstName = "Altay", LastName = "Karakuş", Username = "altay", Password = "test" }
         };
 
         private readonly AppSettings _appSettings;
@@ -54,6 +56,11 @@ namespace WebApplication1.Services
         public IEnumerable<User> GetAll()
         {
             return _users.WithoutPasswords();
+        }
+
+        public Task<IEnumerable<User>> GetAllAsync()
+        {
+            return Task.FromResult(_users.WithoutPasswords());
         }
     }
 }
