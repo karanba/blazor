@@ -1,0 +1,44 @@
+﻿@page "/category"
+@using WebApplication1.Models
+@using WebApplication1.Services
+
+@inject CategoryService categoryService
+<h3>CategoryPage</h3>
+
+@if(categories == null)
+{
+    <p><em>Loading or no categories exist.</em></p>
+}
+else
+{
+    <div class="container border p-3">
+        <div class="row pt-4">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+
+@code {
+    List<Category> categories;
+
+    protected override void OnInitialized()
+    {
+        categories = categoryService.GetCategories();
+    }
+}
