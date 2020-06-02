@@ -15,12 +15,12 @@ namespace WebApplication1.Services
             _db = db;
         }
 
-        public Product GetProduct(int categoryId)
+        public Product GetProduct(int productId)
         {
             var obj = new Product();
             return _db.Products
                     .Include(u => u.Category)
-                    .FirstOrDefault(u => u.Id == categoryId);
+                    .FirstOrDefault(u => u.Id == productId);
         }
 
         public List<Product> GetProducts()
