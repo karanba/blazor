@@ -1,0 +1,95 @@
+﻿@using WebApplication1.Models
+@using WebApplication1.Services
+@inject NavigationManager NavigationManager
+@inject AppointmentService AppointmentService
+
+<div class="p-4 border row">
+    <EditForm class="col-8" Model="@appointment" OnValidSubmit="@ValidSubmit">
+        <div class="form-group row">
+            <div class="col-8 offset-4">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                Namne
+            </div>
+            <div class="col-8">
+                <InputText @bind-Value="@appointment.CustomerName" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                Namne
+            </div>
+            <div class="col-8">
+                <input @bind="@appointment.CustomerEmail" type="email" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                Namne
+            </div>
+            <div class="col-8">
+                <input @bind="@appointment.CustomerPhone" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                Namne
+            </div>
+            <div class="col-8">
+                <InputDate @bind-Value="@appointment.AppointmentDate" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4 offset-4">
+                <button @onclick="OnClickShowDetails" class="btn btn-success form-control">
+                    Back to Details
+                </button>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-primary form-control">
+                    Book Now!
+                </button>
+            </div>
+        </div>
+    </EditForm>
+    <div class="offset-1 col-3">
+        @if (appointment.Product != null)
+        {
+            <img class="card-img-top" style="height: 100%; border-radius: 5px; border: 1px solid #bbb9b9"
+                 src="@convertImageToDisplay(appointment.Product.Image)" alt="Card" />
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Appointment appointment { get; set; }
+
+    [Parameter]
+    public EventCallback OnClickShowDetails { get; set; }
+
+    string convertImageToDisplay(byte[] image)
+    {
+        if (image != null)
+        {
+            var base64 = Convert.ToBase64String(image);
+            var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
+            return finalStr;
+        }
+
+        return string.Empty;
+    }
+
+    private void ValidSubmit()
+    {
+        var result = AppointmentService.CreateAppointment(appointment);
+        if (result)
+        {
+            NavigationManager.NavigateTo("appointmentbooked");
+        }
+    }
+}

@@ -54,6 +54,7 @@ namespace WebApplication1
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<CategoryService>();
             services.AddScoped<ProductService>();
+            services.AddScoped<AppointmentService>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie();
             services.AddScoped<IUserService, UserService>();

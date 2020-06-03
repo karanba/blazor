@@ -1,0 +1,46 @@
+﻿@page "/details/{ProductId:int}"
+@using WebApplication1.Models
+@using WebApplication1.Services
+@inject AppointmentService AppointmentService
+@inject ProductService ProductService
+
+<br />
+
+<h2 class="text-info">@(ShowAppointment ? "Book Appointment" : "Product Details")</h2>
+
+@if (ShowAppointment)
+{
+    <WebApplication1.Pages.Components.AppointmentComponent OnClickShowDetails="OnClickShowDetails" appointment="appointment" />
+}
+else
+{
+    <WebApplication1.Pages.Components.DetailsComponent OnClickShowAppointment="OnClickShowAppointment" appointment="appointment" />
+}
+
+@code {
+    [Parameter]
+    public int ProductId { get; set; }
+
+    public Appointment appointment { get; set; }
+    // this will be false on details page
+    bool ShowAppointment = false;
+    protected override void OnInitialized()
+    {
+        appointment = new Appointment
+        {
+            AppointmentDate = DateTime.Now
+        };
+
+        appointment.Product = ProductService.GetProduct(ProductId);
+    }
+
+    void OnClickShowAppointment()
+    {
+        ShowAppointment = true;
+    }
+
+    void OnClickShowDetails()
+    {
+        ShowAppointment = false;
+    }
+}
