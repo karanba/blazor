@@ -7,19 +7,19 @@ namespace Gear
     {
         static void Main(string[] args)
         {
-            var token = new JWTSecurityToken(
-                issuer: "http://myIssuer",
-                audience: "http://myResource",
-                claims: GetClaims(),
-                signingCredentials: GetKey(),
-                validForm: DateTime.UtcNow,
-                validTo: DateTime.UtcNow.AddHours(1)
-            );
+            //var token = new JWTSecurityToken(
+            //    issuer: "http://myIssuer",
+            //    audience: "http://myResource",
+            //    claims: GetClaims(),
+            //    signingCredentials: GetKey(),
+            //    validForm: DateTime.UtcNow,
+            //    validTo: DateTime.UtcNow.AddHours(1)
+            //);
 
-            var tokenString =
-                new JWTSecurityTokenHandler().WriteToken(token);
+            //var tokenString =
+            //    new JWTSecurityTokenHandler().WriteToken(token);
 
-            Console.WriteLine(tokenString);
+            //Console.WriteLine(tokenString);
         }
     }
 }
